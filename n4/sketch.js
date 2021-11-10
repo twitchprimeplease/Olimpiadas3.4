@@ -53,6 +53,8 @@ function setup() {
       cualquiera++
       cuadrados[i][j] = cualquiera;
       console.log(cuadrados);   
+      strokeWeight(2);
+      rect(150+(100*i),150+(100*j),290);
     }
     
   }
