@@ -53,8 +53,7 @@ function setup() {
       cualquiera++
       cuadrados[i][j] = cualquiera;
       console.log(cuadrados);   
-      strokeWeight(2);
-      rect(150+(100*i),150+(100*j),290);
+     
     }
     
   }
@@ -63,8 +62,12 @@ function setup() {
 
 function draw() {
   background(220);
-  
-  
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      strokeWeight(2);
+      rect(100+(200*i),100+(200*j),150);
+    }
+  }
    
     if (turn == 0){
       for (let i = 0; i < 5; i++) {
