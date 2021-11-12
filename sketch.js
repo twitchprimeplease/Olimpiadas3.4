@@ -6,6 +6,7 @@ class Fichas{
     this.diameter=70
   }
   beRect(){
+    rectMode(CENTER);
     noFill();
     strokeWeight(8);
     rect(this.x,this.y,this.weight);
@@ -65,14 +66,14 @@ function draw() {
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
       strokeWeight(2);
-      rect(100+(200*i),100+(200*j),150);
+      rect(250+(200*i),150+(200*j),150);
     }
   }
    
     if (turn == 0){
       for (let i = 0; i < 5; i++) {
         
-        nuevaFichaR [i] = new Fichas (50,50);
+        nuevaFichaR [i] = new Fichas (150,750);
         nuevaFichaR[i].beRect();
         
       }
@@ -80,7 +81,7 @@ function draw() {
     
     } else if (turn == 1){
       for (let i = 0; i < 4; i++) {
-        nuevaFichaZ [i] = new Fichas (50,50);
+        nuevaFichaZ [i] = new Fichas (150,750);
         nuevaFichaZ[i].beZero();
         
       }
@@ -114,21 +115,3 @@ function mousePressed() {
   console.log(maxTurn);
 }
 
-function mouseMoved(){
-  if (turn == 0){
-    for (let i = 0; i < 5; i++) {
-      nuevaFichaR[i].moving (mouseX, mouseY);
-      
-    }
-
-  
-  } else if (turn == 1){
-    for (let i = 0; i < 4; i++) {
-      nuevaFichaZ[i].moving (mouseX, mouseY);
-      
-    }
-     
-  }
-  
-
-}
