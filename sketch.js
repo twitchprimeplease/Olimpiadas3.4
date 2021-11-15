@@ -5,17 +5,23 @@ class Casilla{
     this.estado = 0;
   }
   pintar(){
+    textAlign(CENTER);
     switch(this.estado){
       case 0:
         fill(255);
         break;
         case 1:
-        fill(255,0,0);
+        fill(0);
+        textSize(32);
+        text('O',this.x+50,this.y+60);
         break;
         case 2:
-        fill(255,255,0);
+          fill(0);
+          textSize(32);
+          text('X',this.x+50,this.y+60);
         break;
     }
+    noFill();
     rect(this.x,this.y,100,100);
   }
 
@@ -38,6 +44,9 @@ class Casilla{
 
 let turno = 1;
 let casillas = [];
+let casillas1 = [];
+let casillas2 = [];
+
 function setup() {  
   createCanvas(300, 300);
 
@@ -73,7 +82,80 @@ function mousePressed() {
 }
 
 function validarGanador() {
-  
+  let c1=0;
+  let c2=0;
+  let v1h = 0;
+  let v1v = 0;
+  let v1d = 0
+  let v2h = 0;
+  let v2v = 0;
+  let v2d = 0
+
+  for(let i = 0; i < casillas.length ; i++){
+    // console.log(casillas[i]);
+    if(casillas[i].estado == 1){
+      casillas1[c1] = casillas[i];
+      c1++; 
+    }  
+  }
+
+
+  for(let i = 0; i < casillas.length ; i++){
+    if(casillas[i].estado == 2){
+      casillas2[c2] = casillas[i];
+      c2++; 
+      // console.log(casillas2);
+    }  
+  }
+
+  for (let i = 0; i < casillas1.length; i++) {
+    for (let j = i; j < casillas1.length; j++) {
+
+      if (j!=i) {
+        if (casillas1[i].x==casillas1[j].x ) {
+          v1v++;
+          
+        }
+      }
+
+      if (j!=i) {
+        if (casillas1[i].y==casillas1[j].y ) {
+          v1h++;
+          
+        }
+      }
+      
+    }
+    
+  }
+
+  for (let i = 0; i < casillas2.length; i++) {
+    for (let j = i; j < casillas2.length; j++) {
+
+      if (j!=i) {
+        if (casillas2[i].x==casillas2[j].x ) {
+          v2v++;
+          
+        }
+      }
+
+      if (j!=i) {
+        if (casillas2[i].y==casillas2[j].y ) {
+          v2h++;
+          
+        }
+      }
+
+    }
+  }
+
+  console.log(v1v);
+  if(v1v==3 || v1h==3){
+    alert('Gana O');
+  }else if(v2v==3 || v2h==3){
+    alert('Gana X');
+  }
+
 }
 
 
